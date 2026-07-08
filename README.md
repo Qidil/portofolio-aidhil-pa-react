@@ -50,11 +50,3 @@ npm run preview    # Pratinjau build produksi
 npm run lint       # Linting kode (oxlint)
 ```
 
-## Deployment
-
-Jalankan `npm run build`, lalu deploy folder `dist/` ke hosting statis:
-
-- **Netlify** — drag & drop folder `dist/`
-- **Vercel** — hubungkan repo GitHub, otomatis deteksi Vite
-- **GitHub Pages** — gunakan branch `gh-pages` atau GitHub Actions
-
