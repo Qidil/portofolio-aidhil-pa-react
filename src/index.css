@@ -113,7 +113,7 @@
 
 @layer components {
   .container-custom {
-    @apply w-full max-w-7xl mx-auto px-4 md:px-8;
+    @apply w-full max-w-7xl mx-auto px-6 md:px-8;
   }
 
   .btn-primary {

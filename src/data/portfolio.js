@@ -15,8 +15,8 @@ export const personalInfo = {
 
 export const about = {
   paragraphs: [
-    'Perkenalkan saya <span class="highlight">Aidhil Prima Abdiguna</span>, lulusan S1 Informatika dengan fokus pada pengembangan web (Frontend & Backend). Berpengalaman dalam membangun aplikasi web responsif menggunakan React.js ataupun framework sejenis serta integrasi backend dengan REST API dan Node.js.',
-    'Berpengalaman dalam menggunakan Python untuk pengoperasian data. Memiliki pengalaman membuat aplikasi multi-window menggunakan Electron. Terbiasa melakukan debugging, testing, serta memastikan aplikasi berjalan secara optimal. Memiliki kemampuan mengelola file dan dokumen dengan efektif, serta problem solving yang baik, cepat beradaptasi dengan teknologi baru, serta mampu bekerja secara individu maupun dalam tim.',
+    'Perkenalkan saya <span class="highlight">Aidhil Prima Abdiguna</span>, lulusan S1 Informatika dengan fokus pada pengembangan web (<span class="highlight">Frontend</span> & <span class="highlight">Backend</span>). Berpengalaman dalam membangun aplikasi web responsif menggunakan <span class="highlight">React.js</span> ataupun framework sejenis serta integrasi <span class="highlight">backend</span> dengan <span class="highlight">REST API</span> dan <span class="highlight">Node.js</span>.',
+    'Berpengalaman dalam menggunakan <span class="highlight">Python</span> untuk pengoperasian data. Memiliki pengalaman membuat aplikasi multi-window menggunakan <span class="highlight">Electron</span>. Terbiasa melakukan <span class="highlight">debugging</span>, <span class="highlight">testing</span>, serta memastikan aplikasi berjalan secara optimal. Memiliki kemampuan mengelola file dan dokumen dengan efektif, serta <span class="highlight">problem solving</span> yang baik, cepat beradaptasi dengan teknologi baru, serta mampu bekerja secara individu maupun dalam tim.',
     'Selain itu, saya juga mempunyai pengalaman dalam mengelola <span class="highlight">Google dan Meta Ads</span> untuk keperluan promosi dan pemasaran digital. Saya terbiasa menganalisis data kampanye, mengoptimalkan strategi iklan, serta meningkatkan ROI melalui pendekatan berbasis data.',
     'Saya percaya bahwa <span class="highlight">teknologi</span> bukan hanya tentang menulis kode, tetapi juga tentang menciptakan pengalaman pengguna yang menyenangkan dan memuaskan. Oleh karena itu, saya selalu berusaha untuk memahami kebutuhan pengguna dan merancang solusi yang sesuai dengan kebutuhan mereka.',
   ],
@@ -55,7 +55,7 @@ export const skills = [
   },
   {
     category: 'Other',
-    icon: 'fa-server',
+    icon: 'fa-toolbox',
     items: [
       { name: 'Google & Meta Ads', percentage: 75 },
       { name: 'Office tools (Word, Excel, PowerPoint)', percentage: 72 },
@@ -140,6 +140,7 @@ export const projects = [
 export const certificates = [
   {
     title: 'Database Programming with SQL',
+    icon: 'fas fa-database',
     issuer: 'Oracle Academy',
     date: 'Oktober 2023',
     description: 'Menguasai Dasar-Dasar SQL, membangun dan mengelola database, menulis query SQL untuk mengambil dan menganalisis data, serta mengimplementasikan praktik terbaik dalam pengelolaan database relasional.',
@@ -153,6 +154,7 @@ export const certificates = [
   },
   {
     title: 'Database Design',
+    icon: 'fas fa-database',
     issuer: 'Oracle Academy',
     date: 'Oktober 2023',
     description: 'Perancangan database relasional dengan entity relationship diagram, normalisasi database, dan implementasi skema database yang efisien.',
@@ -166,6 +168,7 @@ export const certificates = [
   },
   {
     title: 'Pelatihan Junior Web Developer',
+    icon: 'fas fa-laptop-code',
     issuer: 'BNSP dan VSGA Digitalent Scholarship',
     date: 'Juni 2024',
     description: 'Pelatihan dan sertifikasi Junior Web Developer sesuai SKKNI.',
@@ -178,6 +181,7 @@ export const certificates = [
   },
   {
     title: 'Sertifikasi Web Developer',
+    icon: 'fas fa-laptop-code',
     issuer: 'BNSP dan VSGA Digitalent Scholarship',
     date: 'Juni 2024',
     description: 'Sertifikasi kompetensi Web Developer bersertifikat BNSP.',
@@ -190,6 +194,7 @@ export const certificates = [
   },
   {
     title: 'Certificate of Skill Specialization, Frontend - HTML',
+    icon: 'fab fa-html5',
     issuer: 'MySKill.id',
     date: 'April 2026',
     description: 'Spesialisasi Frontend HTML.',
@@ -202,6 +207,7 @@ export const certificates = [
   },
   {
     title: 'Certificate of Skill Specialization, Frontend - CSS',
+    icon: 'fab fa-css3-alt',
     issuer: 'MySKill.id',
     date: 'April 2026',
     description: 'Spesialisasi Frontend CSS.',
@@ -214,6 +220,7 @@ export const certificates = [
   },
   {
     title: 'Certificate of Skill Specialization, Frontend - JavaScript',
+    icon: 'fab fa-js',
     issuer: 'MySKill.id',
     date: 'Juni 2026',
     description: 'Spesialisasi Frontend JavaScript.',
@@ -226,6 +233,7 @@ export const certificates = [
   },
   {
     title: 'Certificate of Skill Specialization, Frontend - React',
+    icon: 'fab fa-react',
     issuer: 'MySKill.id',
     date: 'Juli 2026',
     description: 'Spesialisasi Frontend React.',
@@ -238,6 +246,7 @@ export const certificates = [
   },
   {
     title: 'Certificate of Skill Specialization, Website Development Fundamental',
+    icon: 'fas fa-globe',
     issuer: 'MySKill.id',
     date: 'Mei 2026',
     description: 'Fundamental pengembangan website.',
@@ -250,6 +259,7 @@ export const certificates = [
   },
   {
     title: 'Sertifikat Kelas UI/UX Design Fundamentals',
+    icon: 'fas fa-pencil-ruler',
     issuer: 'SkillPedia.id',
     date: 'Juli 2026',
     description: 'Fundamental UI/UX Design.',
@@ -262,6 +272,7 @@ export const certificates = [
   },
   {
     title: 'Pelatihan dan Sertifikasi Kelas Iklan Online Google Ads',
+    icon: 'fas fa-bullhorn',
     issuer: 'SkillPedia.id',
     date: 'Mei 2026',
     description: 'Pelatihan Google Ads.',
@@ -274,6 +285,7 @@ export const certificates = [
   },
   {
     title: 'Pelatihan dan Sertifikasi Kelas Search Engine Optimization (SEO)',
+    icon: 'fas fa-chart-line',
     issuer: 'SkillPedia.id',
     date: 'Mei 2026',
     description: 'Pelatihan SEO.',
@@ -300,7 +312,7 @@ export const education = [
   {
     title: 'Ikatan Mahasiswa Muhammadiyah Fakultas Teknik (IMM-FT)',
     organization: 'Universitas Muhammadiyah Makassar — Departemen Media & Komunikasi, Periode 2022–2023',
-    icon: 'fa-bullhorn',
+    icon: 'fa-newspaper',
     details: [
       'Mengelola Informasi Organisasi – Pusat informasi internal dan eksternal',
       'Merancang Materi Publikasi – Mendesain dan menyusun konten publikasi',
@@ -310,7 +322,7 @@ export const education = [
   {
     title: 'PMR PMI Unit 213 SMAN 14 Makassar (PMR)',
     organization: 'Sekretaris Umum, Periode 2019',
-    icon: 'fa-bullhorn',
+    icon: 'fa-clipboard',
     details: [
       'Mengelola administrasi organisasi, termasuk penyusunan surat-menyurat dan notulen rapat',
       'Mengoordinasikan jadwal kegiatan dan memastikan kelancaran komunikasi',
@@ -320,7 +332,7 @@ export const education = [
   {
     title: 'PMR PMI Unit 213 SMAN 14 Makassar (PMR)',
     organization: 'Penanggungjawab Organisasi, Periode 2022-2023',
-    icon: 'fa-bullhorn',
+    icon: 'fa-user-tie',
     details: [
       'Mengoordinasikan pelaksanaan program kerja organisasi',
       'Memimpin koordinasi dengan pengurus dan anggota',

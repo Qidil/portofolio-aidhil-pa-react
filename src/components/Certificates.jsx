@@ -42,7 +42,7 @@ export default function Certificates() {
                     background: 'var(--color-brand-gold-glow)',
                     border: '1px solid rgba(63,169,245,.25)',
                   }}>
-                    <i className="fas fa-database"></i>
+                    <i className={cert.icon}></i>
                   </div>
                   <p className="font-serif text-lg font-semibold text-white mb-2.5">{cert.title}</p>
                   <p className="text-[0.86rem] text-brand-muted leading-relaxed">{cert.issuer} — {cert.date}</p>

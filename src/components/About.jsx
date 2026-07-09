@@ -39,9 +39,9 @@ export default function About() {
               <p key={idx} className="text-[0.95rem] text-brand-muted leading-relaxed mb-5" dangerouslySetInnerHTML={{ __html: para }} />
             ))}
 
-            <div className="grid grid-cols-2 gap-3 mt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3 mt-8">
               {about.infoGrid.map((info, idx) => (
-                <div key={idx} className="flex flex-col gap-0.5">
+                <div key={idx} className="flex flex-col gap-0.5 p-2.5 rounded-sm bg-brand-card">
                   <p className="font-mono text-[0.7rem] text-brand-muted tracking-widest uppercase">{info.label}</p>
                   <p className="text-[0.9rem] text-brand-text font-medium" style={info.value === 'Available ✓' ? { color: '#48d97a' } : {}}>{info.value}</p>
                 </div>
