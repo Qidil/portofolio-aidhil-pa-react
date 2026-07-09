@@ -141,6 +141,7 @@ export const certificates = [
   {
     title: 'Database Programming with SQL',
     icon: 'fas fa-database',
+    category: 'Backend & Tools',
     issuer: 'Oracle Academy',
     date: 'Oktober 2023',
     description: 'Menguasai Dasar-Dasar SQL, membangun dan mengelola database, menulis query SQL untuk mengambil dan menganalisis data, serta mengimplementasikan praktik terbaik dalam pengelolaan database relasional.',
@@ -155,6 +156,7 @@ export const certificates = [
   {
     title: 'Database Design',
     icon: 'fas fa-database',
+    category: 'Backend & Tools',
     issuer: 'Oracle Academy',
     date: 'Oktober 2023',
     description: 'Perancangan database relasional dengan entity relationship diagram, normalisasi database, dan implementasi skema database yang efisien.',
@@ -169,6 +171,7 @@ export const certificates = [
   {
     title: 'Pelatihan Junior Web Developer',
     icon: 'fas fa-laptop-code',
+    category: 'Frontend Development',
     issuer: 'BNSP dan VSGA Digitalent Scholarship',
     date: 'Juni 2024',
     description: 'Pelatihan dan sertifikasi Junior Web Developer sesuai SKKNI.',
@@ -182,6 +185,7 @@ export const certificates = [
   {
     title: 'Sertifikasi Web Developer',
     icon: 'fas fa-laptop-code',
+    category: 'Frontend Development',
     issuer: 'BNSP dan VSGA Digitalent Scholarship',
     date: 'Juni 2024',
     description: 'Sertifikasi kompetensi Web Developer bersertifikat BNSP.',
@@ -195,6 +199,7 @@ export const certificates = [
   {
     title: 'Certificate of Skill Specialization, Frontend - HTML',
     icon: 'fab fa-html5',
+    category: 'Frontend Development',
     issuer: 'MySKill.id',
     date: 'April 2026',
     description: 'Spesialisasi Frontend HTML.',
@@ -208,6 +213,7 @@ export const certificates = [
   {
     title: 'Certificate of Skill Specialization, Frontend - CSS',
     icon: 'fab fa-css3-alt',
+    category: 'Frontend Development',
     issuer: 'MySKill.id',
     date: 'April 2026',
     description: 'Spesialisasi Frontend CSS.',
@@ -221,6 +227,7 @@ export const certificates = [
   {
     title: 'Certificate of Skill Specialization, Frontend - JavaScript',
     icon: 'fab fa-js',
+    category: 'Frontend Development',
     issuer: 'MySKill.id',
     date: 'Juni 2026',
     description: 'Spesialisasi Frontend JavaScript.',
@@ -234,6 +241,7 @@ export const certificates = [
   {
     title: 'Certificate of Skill Specialization, Frontend - React',
     icon: 'fab fa-react',
+    category: 'Frontend Development',
     issuer: 'MySKill.id',
     date: 'Juli 2026',
     description: 'Spesialisasi Frontend React.',
@@ -247,6 +255,7 @@ export const certificates = [
   {
     title: 'Certificate of Skill Specialization, Website Development Fundamental',
     icon: 'fas fa-globe',
+    category: 'Frontend Development',
     issuer: 'MySKill.id',
     date: 'Mei 2026',
     description: 'Fundamental pengembangan website.',
@@ -260,6 +269,7 @@ export const certificates = [
   {
     title: 'Sertifikat Kelas UI/UX Design Fundamentals',
     icon: 'fas fa-pencil-ruler',
+    category: 'Frontend Development',
     issuer: 'SkillPedia.id',
     date: 'Juli 2026',
     description: 'Fundamental UI/UX Design.',
@@ -273,6 +283,7 @@ export const certificates = [
   {
     title: 'Pelatihan dan Sertifikasi Kelas Iklan Online Google Ads',
     icon: 'fas fa-bullhorn',
+    category: 'Other',
     issuer: 'SkillPedia.id',
     date: 'Mei 2026',
     description: 'Pelatihan Google Ads.',
@@ -286,6 +297,7 @@ export const certificates = [
   {
     title: 'Pelatihan dan Sertifikasi Kelas Search Engine Optimization (SEO)',
     icon: 'fas fa-chart-line',
+    category: 'Other',
     issuer: 'SkillPedia.id',
     date: 'Mei 2026',
     description: 'Pelatihan SEO.',

@@ -27,7 +27,7 @@ export default function Hero() {
       }} />
 
       <div className="container-custom relative z-10">
-        <div className="flex flex-col md:flex-row items-center gap-20">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-20">
           {/* Photo */}
           <div className="flex-shrink-0 relative">
             <div className="w-[260px] h-[260px] rounded-full p-[3px]" style={{
@@ -47,7 +47,7 @@ export default function Hero() {
           </div>
 
           {/* Text */}
-          <div className="flex-1">
+          <div className="max-w-xl">
             <div className="animate-fade-in opacity-0 translate-y-5" style={{ animationDelay: '0s' }}>
               <p className="font-mono text-xs text-brand-gold tracking-widest uppercase flex items-center gap-2.5 mb-4">
                 <span className="w-[30px] h-px bg-brand-gold" />
