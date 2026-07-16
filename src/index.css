@@ -1,5 +1,52 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Karla:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@font-face {
+  font-family: 'NK57 Monospace';
+  src: url('./assets/fonts/NK57-Monospace-No-Lt.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NK57 Monospace';
+  src: url('./assets/fonts/NK57-Monospace-No-Bk.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NK57 Monospace';
+  src: url('./assets/fonts/NK57-Monospace-No-Rg.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NK57 Monospace';
+  src: url('./assets/fonts/NK57-Monospace-No-Sb.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NK57 Monospace';
+  src: url('./assets/fonts/NK57-Monospace-No-Bd.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NK57 Monospace';
+  src: url('./assets/fonts/NK57-Monospace-No-Eb.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
 
 @theme {
   --color-brand-dark: #07080d;
@@ -14,9 +61,9 @@
   --color-brand-border: rgba(255,255,255,0.08);
   --color-brand-card: rgba(255,255,255,0.035);
 
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-sans: 'Karla', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-serif: 'NK57 Monospace', monospace;
+  --font-sans: 'NK57 Monospace', monospace;
+  --font-mono: 'NK57 Monospace', monospace;
 
   --shadow-gold-glow: 0 0 20px rgba(63,169,245,0.35);
   --shadow-accent-glow: 0 0 20px rgba(78,158,255,0.3);
