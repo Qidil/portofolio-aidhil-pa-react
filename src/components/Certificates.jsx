@@ -5,7 +5,7 @@ import { certificates } from '../data/portfolio';
 const categoryConfig = {
   'Frontend Development': { icon: 'fa-code', order: 0 },
   'Backend & Tools': { icon: 'fa-server', order: 1 },
-  'Other': { icon: 'fa-toolbox', order: 2 },
+  'Digital Marketing': { icon: 'fa-bullhorn', order: 2 },
 };
 
 export default function Certificates() {

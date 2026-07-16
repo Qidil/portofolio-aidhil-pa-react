@@ -135,6 +135,13 @@ export const projects = [
     technologies: ['Python', 'MySQL', 'Cosine Similarity'],
     link: 'https://github.com/Qidil/cosine-similarity-randomize-question-shuffle',
   },
+  {
+    title: 'Weather Now',
+    description: 'Aplikasi web prakiraan cuaca modern dengan desain anime-inspired (Tensei Shitara Slime Datta-ken). Cuaca real-time, prakiraan 7 hari, AQI, pencarian kota global, dan offline cache.',
+    icon: 'fa-cloud-sun',
+    technologies: ['React.js', 'Tailwind CSS', 'React Router', 'TanStack Query'],
+    link: 'https://github.com/Qidil/weather-now',
+  },
 ];
 
 export const certificates = [
@@ -283,7 +290,7 @@ export const certificates = [
   {
     title: 'Pelatihan dan Sertifikasi Kelas Iklan Online Google Ads',
     icon: 'fas fa-bullhorn',
-    category: 'Other',
+    category: 'Digital Marketing',
     issuer: 'SkillPedia.id',
     date: 'Mei 2026',
     description: 'Pelatihan Google Ads.',
@@ -297,7 +304,7 @@ export const certificates = [
   {
     title: 'Pelatihan dan Sertifikasi Kelas Search Engine Optimization (SEO)',
     icon: 'fas fa-chart-line',
-    category: 'Other',
+    category: 'Digital Marketing',
     issuer: 'SkillPedia.id',
     date: 'Mei 2026',
     description: 'Pelatihan SEO.',
@@ -355,7 +362,7 @@ export const education = [
 
 export const stats = {
   yearsExperience: 2,
-  projectsCompleted: 3,
+  projectsCompleted: 4,
   gpa: '3,52',
 };
 
