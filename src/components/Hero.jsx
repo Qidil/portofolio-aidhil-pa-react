@@ -2,7 +2,7 @@ import { personalInfo, stats } from '../data/portfolio';
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center pt-20 md:pt-0 pb-24 md:pb-0 overflow-hidden bg-brand-dark">
+    <section id="hero" className="relative min-h-screen flex items-center pt-20 md:pt-28 pb-24 md:pb-12 bg-brand-dark">
       {/* Noise texture overlay */}
       <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.025]" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`
@@ -76,17 +76,17 @@ export default function Hero() {
             <div className="flex gap-10 mt-12 animate-fade-in opacity-0 translate-y-5" style={{ animationDelay: '0.6s' }}>
               <div>
                 <p className="font-serif text-[2.2rem] font-bold text-brand-gold-light leading-none">{stats.yearsExperience}+</p>
-                <p className="text-xs text-brand-muted tracking-wider uppercase mt-1">Tahun Pengalaman</p>
+                <p className="text-xs text-white/55 tracking-wider uppercase mt-1">Tahun Pengalaman</p>
               </div>
               <div className="w-px bg-brand-border self-stretch" />
               <div>
                 <p className="font-serif text-[2.2rem] font-bold text-brand-gold-light leading-none">{stats.projectsCompleted}</p>
-                <p className="text-xs text-brand-muted tracking-wider uppercase mt-1">Proyek Portofolio</p>
+                <p className="text-xs text-white/55 tracking-wider uppercase mt-1">Proyek Portofolio</p>
               </div>
               <div className="w-px bg-brand-border self-stretch" />
               <div>
                 <p className="font-serif text-[2.2rem] font-bold text-brand-gold-light leading-none">{stats.gpa}</p>
-                <p className="text-xs text-brand-muted tracking-wider uppercase mt-1">IPK Lulusan</p>
+                <p className="text-xs text-white/55 tracking-wider uppercase mt-1">IPK Lulusan</p>
               </div>
             </div>
           </div>
