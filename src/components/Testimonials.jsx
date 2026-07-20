@@ -10,6 +10,8 @@ export default function Testimonials() {
     setOpenItem(openItem === idx ? null : idx);
   };
 
+  const eduIconColors = ['#FFD700', '#4ECDC4', '#FF00FF', '#38BDF8'];
+
   return (
     <section id="testimonials" className="py-[100px] bg-brand-dark">
       <div className="container-custom">
@@ -18,7 +20,12 @@ export default function Testimonials() {
             <span className="w-6 h-px bg-brand-gold" />
             Latar Belakang
           </p>
-          <h2 className="font-serif text-[clamp(1.9rem,3.5vw,2.8rem)] font-semibold text-white leading-tight">
+          <h2 className="font-serif text-[clamp(1.9rem,3.5vw,2.8rem)] font-semibold leading-tight" style={{
+            background: 'linear-gradient(135deg, #FFD700, #FF00FF)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}>
             Pendidikan & Organisasi
           </h2>
           <div className="w-12 h-0.5 mt-4 mx-auto" style={{
@@ -32,11 +39,12 @@ export default function Testimonials() {
             return (
               <div
                 key={idx}
-                className={`bg-brand-card border border-brand-border rounded-sm p-8 transition-colors duration-300 hover:border-[rgba(63,169,245,.25)] reveal reveal-delay-${Math.min(idx + 1, 6)} ${isVisible ? 'visible' : ''}`}
+                className={`bg-brand-card border border-brand-border rounded-sm p-8 transition-colors duration-300 hover:border-[rgba(255,215,0,.25)] reveal reveal-delay-${Math.min(idx + 1, 6)} ${isVisible ? 'visible' : ''}`}
               >
-                <div className="w-[60px] h-[60px] rounded-full flex items-center justify-center mb-4 text-brand-gold text-xl" style={{
-                  background: 'var(--color-brand-gold-glow)',
-                  border: '1px solid rgba(63,169,245,.25)',
+                <div className="w-[60px] h-[60px] rounded-full flex items-center justify-center mb-4 text-xl" style={{
+                  background: `${eduIconColors[idx % eduIconColors.length]}20`,
+                  border: `1px solid ${eduIconColors[idx % eduIconColors.length]}40`,
+                  color: eduIconColors[idx % eduIconColors.length],
                 }}>
                   <i className={`fas ${item.icon}`}></i>
                 </div>
@@ -45,7 +53,13 @@ export default function Testimonials() {
 
                 <button
                   onClick={() => toggleItem(idx)}
-                  className="inline-flex items-center gap-1.5 text-brand-gold-light text-[0.82rem] font-semibold bg-transparent border-none cursor-pointer"
+                  className="inline-flex items-center gap-1.5 text-[0.82rem] font-semibold bg-transparent border-none cursor-pointer"
+                  style={{
+                    background: 'linear-gradient(135deg, #FFD700, #FF00FF)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
                 >
                   {isOpen ? 'Sembunyikan' : 'Selengkapnya'} <i className="fas fa-chevron-down text-[0.7rem]" style={{
                     transform: isOpen ? 'rotate(180deg)' : '',

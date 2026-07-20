@@ -1,8 +1,15 @@
 import useScrollReveal from '../hooks/useScrollReveal';
-import { personalInfo } from '../data/portfolio';
+import { personalInfo, links } from '../data/portfolio';
 
 export default function Contact() {
   const [sectionRef, isVisible] = useScrollReveal();
+
+  const contactItems = [
+    { icon: 'fas fa-envelope', label: 'Email', value: personalInfo.email, color: '#FFD700', href: links.email, hoverColor: '#FFD700' },
+    { icon: 'fas fa-phone', label: 'Telepon / WhatsApp', value: personalInfo.phone, color: '#4ECDC4', href: links.whatsapp, hoverColor: '#4ECDC4' },
+    { icon: 'fas fa-map-marker-alt', label: 'Lokasi', value: personalInfo.location, color: '#FF00FF' },
+    { icon: 'fab fa-github', label: 'GitHub', value: 'github.com/Qidil', color: '#C9D1D9', href: links.github, hoverColor: '#C9D1D9' },
+  ];
 
   return (
     <section id="contact" className="py-[100px] bg-brand-darker">
@@ -15,7 +22,12 @@ export default function Contact() {
                 <span className="w-6 h-px bg-brand-gold" />
                 Kontak
               </p>
-              <h2 className="font-serif text-[clamp(1.9rem,3.5vw,2.8rem)] font-semibold text-white leading-tight">
+              <h2 className="font-serif text-[clamp(1.9rem,3.5vw,2.8rem)] font-semibold leading-tight" style={{
+                background: 'linear-gradient(135deg, #FFD700, #FF00FF)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>
                 Ayo Bekerja<br />Bersama
               </h2>
               <div className="w-12 h-0.5 mt-4" style={{
@@ -23,61 +35,38 @@ export default function Contact() {
               }} />
             </div>
             <p className="text-[0.92rem] text-brand-muted leading-relaxed mb-8">
-              Punya proyek menarik? Saya terbuka untuk diskusi, kolaborasi, dan peluang baru. Jangan ragu untuk menghubungi saya!
+              Frontend developer yang berdedikasi menciptakan pengalaman digital berkualitas tinggi. Tersedia untuk proyek freelance & kolaborasi penuh waktu.
             </p>
           </div>
 
           {/* Right */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3.5">
-              <div className="w-10 h-10 flex items-center justify-center rounded-sm text-brand-gold text-[0.9rem] flex-shrink-0 border" style={{
-                background: 'var(--color-brand-gold-glow)',
-                borderColor: 'rgba(63,169,245,.2)',
-              }}>
-                <i className="fas fa-envelope"></i>
-              </div>
-              <div>
-                <p className="text-xs text-brand-muted tracking-wider uppercase">Email</p>
-                <p className="text-[0.9rem] text-brand-text font-medium">{personalInfo.email}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3.5">
-              <div className="w-10 h-10 flex items-center justify-center rounded-sm text-brand-gold text-[0.9rem] flex-shrink-0 border" style={{
-                background: 'var(--color-brand-gold-glow)',
-                borderColor: 'rgba(63,169,245,.2)',
-              }}>
-                <i className="fas fa-phone"></i>
-              </div>
-              <div>
-                <p className="text-xs text-brand-muted tracking-wider uppercase">Telepon / WhatsApp</p>
-                <p className="text-[0.9rem] text-brand-text font-medium">{personalInfo.phone}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3.5">
-              <div className="w-10 h-10 flex items-center justify-center rounded-sm text-brand-gold text-[0.9rem] flex-shrink-0 border" style={{
-                background: 'var(--color-brand-gold-glow)',
-                borderColor: 'rgba(63,169,245,.2)',
-              }}>
-                <i className="fas fa-map-marker-alt"></i>
-              </div>
-              <div>
-                <p className="text-xs text-brand-muted tracking-wider uppercase">Lokasi</p>
-                <p className="text-[0.9rem] text-brand-text font-medium">{personalInfo.location}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3.5">
-              <div className="w-10 h-10 flex items-center justify-center rounded-sm text-brand-gold text-[0.9rem] flex-shrink-0 border" style={{
-                background: 'var(--color-brand-gold-glow)',
-                borderColor: 'rgba(63,169,245,.2)',
-              }}>
-                <i className="fab fa-github"></i>
-              </div>
-              <div>
-                <p className="text-xs text-brand-muted tracking-wider uppercase">GitHub</p>
-                <p className="text-[0.9rem] text-brand-text font-medium">github.com/Qidil</p>
-              </div>
-            </div>
+            {contactItems.map((item, idx) => {
+              const isClickable = !!item.href;
+              const Tag = isClickable ? 'a' : 'div';
+              return (
+              <Tag
+                key={idx}
+                {...(isClickable ? { href: item.href, target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className="flex items-center gap-3.5 no-underline group"
+              >
+                <div className="w-10 h-10 flex items-center justify-center rounded-sm text-white text-[0.9rem] flex-shrink-0 border-0 transition-colors duration-200" style={{
+                  background: item.color,
+                }}>
+                  <i className={item.icon}></i>
+                </div>
+                <div className="transition-colors duration-200" style={isClickable ? {} : {}}>
+                  <p className="text-xs text-brand-muted tracking-wider uppercase">{item.label}</p>
+                  <p className="text-[0.9rem] font-medium transition-colors duration-200" style={isClickable ? { color: item.color } : { color: 'var(--color-brand-text)' }}>{item.value}</p>
+                </div>
+              </Tag>
+            );
+            })}
           </div>
+        </div>
+
+        <div className="border-t border-brand-border pt-5 mt-[60px] text-center">
+          <p className="text-[0.8rem] text-brand-muted">© 2025 <span className="text-brand-gold">Aidhil Prima Abdiguna</span>. All rights reserved.</p>
         </div>
       </div>
     </section>

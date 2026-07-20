@@ -41,6 +41,13 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 
+# AI & Spec Files (do not push to GitHub)
+.agents/
+.claude/
+.opencode/
+project-context/
+skills-lock.json
+
 # Misc
 *.suo
 *.ntvs*

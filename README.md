@@ -19,7 +19,7 @@ Portfolio modern dan responsif untuk menampilkan proyek, keahlian, pengalaman, d
 
 ## Fitur
 
-- Tema gelap dengan aksen biru (`#3fa9f5`)
+- Tema gelap/terang dengan aksen emas (`#FFD700`), teal (`#4ECDC4`), magenta (`#FF00FF`)
 - Animasi scroll yang halus (IntersectionObserver)
 - Tampilan responsif (mobile-first)
 - Panel navigasi geser masuk dari kanan (mobile)

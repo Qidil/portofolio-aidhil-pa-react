@@ -28,6 +28,8 @@ export default function Certificates() {
     setOpenCert(openCert === idx ? null : idx);
   };
 
+const certIconColors = ['#4ECDC4', '#FFD700', '#FF00FF', '#38BDF8', '#A259FF', '#06B6D4', '#FF6B6B', '#339933', '#F29111', '#CA4245', '#00C4CC', '#FFD700'];
+
   let globalIdx = 0;
 
   return (
@@ -38,7 +40,12 @@ export default function Certificates() {
             <span className="w-6 h-px bg-brand-gold" />
             Pelatihan yang saya ikuti
           </p>
-          <h2 className="font-serif text-[clamp(1.9rem,3.5vw,2.8rem)] font-semibold text-white leading-tight">
+          <h2 className="font-serif text-[clamp(1.9rem,3.5vw,2.8rem)] font-semibold leading-tight" style={{
+            background: 'linear-gradient(135deg, #FFD700, #FF00FF)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}>
             Sertifikasi
           </h2>
           <div className="w-12 h-0.5 mt-4 mx-auto" style={{
@@ -50,8 +57,18 @@ export default function Certificates() {
           {grouped.map(([category, certs]) => (
             <div key={category} className="mb-16 last:mb-0">
               <div className="flex items-center gap-2.5 mb-8">
-                <i className={`fas ${categoryConfig[category]?.icon || 'fa-folder'} text-brand-gold text-base`} />
-                <p className="font-serif text-xl text-brand-gold-light font-semibold">{category}</p>
+                <i className={`fas ${categoryConfig[category]?.icon || 'fa-folder'} text-base`} style={{
+                  background: 'linear-gradient(135deg, #FFD700, #FF00FF)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }} />
+                <p className="font-serif text-xl font-semibold" style={{
+                  background: 'linear-gradient(135deg, #FFD700, #FF00FF)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}>{category}</p>
                 <div className="h-px flex-1 bg-brand-border" />
               </div>
 
@@ -62,22 +79,28 @@ export default function Certificates() {
                   return (
                     <div
                       key={idx}
-                      className={`bg-brand-card border border-brand-border rounded-sm text-center transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(63,169,245,.3)] hover:bg-[rgba(255,255,255,.05)] reveal reveal-delay-${Math.min(idx + 1, 6)} ${isVisible ? 'visible' : ''}`}
+                      className={`bg-brand-card border border-brand-border rounded-sm text-center transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(255,215,0,.3)] hover:bg-[rgba(255,255,255,.05)] reveal reveal-delay-${Math.min(idx + 1, 6)} ${isVisible ? 'visible' : ''}`}
                     >
                       <button
                         onClick={() => toggleCert(idx)}
                         className="w-full p-9 flex flex-col items-center"
                       >
-                        <div className="w-[60px] h-[60px] rounded-full flex items-center justify-center mx-auto mb-5 text-brand-gold text-xl" style={{
-                          background: 'var(--color-brand-gold-glow)',
-                          border: '1px solid rgba(63,169,245,.25)',
+                        <div className="w-[60px] h-[60px] rounded-full flex items-center justify-center mx-auto mb-5 text-xl" style={{
+                          background: `${certIconColors[idx % certIconColors.length]}20`,
+                          border: `1px solid ${certIconColors[idx % certIconColors.length]}40`,
+                          color: certIconColors[idx % certIconColors.length],
                         }}>
                           <i className={cert.icon}></i>
                         </div>
                         <p className="font-serif text-lg font-semibold text-white mb-2.5">{cert.title}</p>
                         <p className="text-[0.86rem] text-brand-muted leading-relaxed">{cert.issuer} — {cert.date}</p>
                         {cert.details && (
-                          <span className="inline-flex items-center gap-1.5 mt-1.5 text-brand-gold-light text-[0.82rem] font-semibold bg-transparent border-none cursor-pointer">
+                          <span className="inline-flex items-center gap-1.5 mt-1.5 text-[0.82rem] font-semibold bg-transparent border-none cursor-pointer" style={{
+                            background: 'linear-gradient(135deg, #FFD700, #FF00FF)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text',
+                          }}>
                             {isOpen ? 'Sembunyikan' : 'Selengkapnya'} <i className="fas fa-chevron-down text-[0.7rem]" style={{
                               transform: isOpen ? 'rotate(180deg)' : '',
                               transition: 'transform 0.3s ease',
@@ -101,7 +124,14 @@ export default function Certificates() {
                                 href={cert.credentialUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 text-brand-gold text-[0.82rem] font-semibold no-underline border-b border-brand-gold pb-0.5 hover:text-brand-gold-light hover:border-brand-gold-light"
+                                className="inline-flex items-center gap-1.5 text-[0.82rem] font-semibold no-underline pb-0.5 hover:opacity-80"
+                                style={{
+                                  background: 'linear-gradient(135deg, #FFD700, #FF00FF)',
+                                  WebkitBackgroundClip: 'text',
+                                  WebkitTextFillColor: 'transparent',
+                                  backgroundClip: 'text',
+                                  borderBottom: '1px solid rgba(255,215,0,.4)',
+                                }}
                               >
                                 Link Sertifikat <i className="fas fa-arrow-up-right-from-square"></i>
                               </a>

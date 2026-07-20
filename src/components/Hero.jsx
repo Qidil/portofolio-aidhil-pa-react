@@ -10,7 +10,7 @@ export default function Hero() {
 
       {/* Decorative grid */}
       <div className="absolute inset-0 pointer-events-none" style={{
-        backgroundImage: 'linear-gradient(rgba(63,169,245,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(63,169,245,.04) 1px, transparent 1px)',
+        backgroundImage: 'linear-gradient(rgba(255,215,0,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,.04) 1px, transparent 1px)',
         backgroundSize: '60px 60px',
         WebkitMaskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%)',
         maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%)',
@@ -18,11 +18,15 @@ export default function Hero() {
 
       {/* Glowing orbs */}
       <div className="absolute w-[500px] h-[500px] rounded-full pointer-events-none -top-[100px] -right-[100px]" style={{
-        background: 'radial-gradient(circle, rgba(63,169,245,.12) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(255,215,0,.12) 0%, transparent 70%)',
         filter: 'blur(80px)',
       }} />
       <div className="absolute w-[300px] h-[300px] rounded-full pointer-events-none bottom-[100px] left-[5%]" style={{
-        background: 'radial-gradient(circle, rgba(78,158,255,.08) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(78,205,196,.08) 0%, transparent 70%)',
+        filter: 'blur(80px)',
+      }} />
+      <div className="absolute w-[350px] h-[350px] rounded-full pointer-events-none bottom-[300px] right-[10%]" style={{
+        background: 'radial-gradient(circle, rgba(255,0,255,.08) 0%, transparent 70%)',
         filter: 'blur(80px)',
       }} />
 
@@ -31,7 +35,7 @@ export default function Hero() {
           {/* Photo */}
           <div className="flex-shrink-0 relative">
             <div className="w-[260px] h-[260px] rounded-full p-[3px]" style={{
-              background: 'conic-gradient(var(--color-brand-gold), var(--color-brand-gold-light), var(--color-brand-gold), transparent 60%, var(--color-brand-gold))',
+              background: 'conic-gradient(var(--color-brand-gold), var(--color-brand-teal), var(--color-brand-accent), var(--color-brand-gold-light), var(--color-brand-gold), transparent 60%, var(--color-brand-gold))',
               animation: 'spin 8s linear infinite',
             }}>
               <div className="w-full h-full rounded-full bg-brand-darker overflow-hidden" style={{
@@ -51,16 +55,26 @@ export default function Hero() {
             <div className="animate-fade-in opacity-0 translate-y-5" style={{ animationDelay: '0s' }}>
               <p className="font-mono text-xs text-brand-gold tracking-widest uppercase flex items-center gap-2.5 mb-4">
                 <span className="w-[30px] h-px bg-brand-gold" />
-                Web Developer
+                Frontend Developer
               </p>
             </div>
 
             <h1 className="font-serif text-[clamp(2.8rem,5vw,4.5rem)] font-semibold leading-tight text-white mb-2 animate-fade-in opacity-0 translate-y-5" style={{ animationDelay: '0.12s' }}>
-              Aidhil <span className="text-brand-gold-light">Prima Abdiguna</span>
+              Aidhil <span style={{
+                background: 'linear-gradient(135deg, #FFD700, #FF00FF)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>Prima Abdiguna</span>
             </h1>
 
-            <p className="text-lg font-light text-brand-muted mb-7 tracking-wide animate-fade-in opacity-0 translate-y-5" style={{ animationDelay: '0.24s' }}>
-              <strong className="text-brand-text font-medium">S1 Informatika</strong> - Universitas Muhammadiyah Makassar
+              <p className="text-lg font-light text-brand-muted mb-7 tracking-wide animate-fade-in opacity-0 translate-y-5" style={{ animationDelay: '0.24s' }}>
+              <strong style={{
+                background: 'linear-gradient(135deg, #FFD700, #4ECDC4)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>S1 Informatika</strong> - Universitas Muhammadiyah Makassar
             </p>
 
             <p className="text-[0.95rem] text-brand-muted max-w-[480px] mb-10 leading-relaxed animate-fade-in opacity-0 translate-y-5" style={{ animationDelay: '0.36s' }}>
@@ -68,24 +82,42 @@ export default function Hero() {
             </p>
 
             <div className="flex gap-4 flex-wrap animate-fade-in opacity-0 translate-y-5" style={{ animationDelay: '0.48s' }}>
-              <a href="#contact" className="btn-primary inline-flex items-center gap-2">
+              <a href="#contact" className="inline-flex items-center gap-2 px-6 py-3 bg-brand-gold text-brand-dark font-semibold rounded-md transition-all duration-300 cursor-pointer"
+                onMouseEnter={e => { e.currentTarget.style.background = '#4ECDC4'; e.currentTarget.style.border = '1px solid #FF00FF'; e.currentTarget.style.color = '#FFFFFF'; }}
+                onMouseLeave={e => { e.currentTarget.style.background = ''; e.currentTarget.style.border = ''; e.currentTarget.style.color = ''; }}
+              >
                 <i className="fas fa-envelope"></i> Hire Me
               </a>
             </div>
 
             <div className="flex gap-10 mt-12 animate-fade-in opacity-0 translate-y-5" style={{ animationDelay: '0.6s' }}>
               <div>
-                <p className="font-serif text-[2.2rem] font-bold text-brand-gold-light leading-none">{stats.yearsExperience}+</p>
+                <p className="font-serif text-[2.2rem] font-bold leading-none" style={{
+                  background: 'linear-gradient(135deg, #FFD700, #4ECDC4, #FF00FF)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}>{stats.yearsExperience}+</p>
                 <p className="text-xs text-white/55 tracking-wider uppercase mt-1">Tahun Pengalaman</p>
               </div>
               <div className="w-px bg-brand-border self-stretch" />
               <div>
-                <p className="font-serif text-[2.2rem] font-bold text-brand-gold-light leading-none">{stats.projectsCompleted}</p>
+                <p className="font-serif text-[2.2rem] font-bold leading-none" style={{
+                  background: 'linear-gradient(135deg, #FFD700, #4ECDC4, #FF00FF)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}>{stats.projectsCompleted}</p>
                 <p className="text-xs text-white/55 tracking-wider uppercase mt-1">Proyek Portofolio</p>
               </div>
               <div className="w-px bg-brand-border self-stretch" />
               <div>
-                <p className="font-serif text-[2.2rem] font-bold text-brand-gold-light leading-none">{stats.gpa}</p>
+                <p className="font-serif text-[2.2rem] font-bold leading-none" style={{
+                  background: 'linear-gradient(135deg, #FFD700, #4ECDC4, #FF00FF)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}>{stats.gpa}</p>
                 <p className="text-xs text-white/55 tracking-wider uppercase mt-1">IPK Lulusan</p>
               </div>
             </div>

@@ -7,15 +7,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Design System - Primary Colors (berdasarkan spec: blue accent #3fa9f5)
+        // Design System - Retro/Pixel Theme
         brand: {
           dark: '#07080d',      // --bg (background)
           darker: '#0d0f18',    // --bg2 (secondary bg)
           darkest: '#12141f',   // --bg3 (card bg)
-          gold: '#3fa9f5',      // --gold (primary accent - blue sesuai PRD)
-          'gold-light': '#7cc4ff', // --gold-lt (light blue)
-          'gold-glow': 'rgba(63,169,245,0.18)', // --gold-glow
-          accent: '#4e9eff',    // --accent (secondary blue)
+          gold: '#FFD700',      // --gold (primary accent)
+          'gold-light': '#FFE44D', // --gold-lt (light gold)
+          'gold-glow': 'rgba(255,215,0,0.18)', // --gold-glow
+          teal: '#4ECDC4',      // --teal (secondary)
+          'teal-glow': 'rgba(78,205,196,0.2)', // --teal-glow
+          accent: '#FF00FF',    // --accent (magenta)
+          'accent-glow': 'rgba(255,0,255,0.2)', // --accent-glow
           text: '#e8e6df',      // --text (primary text)
           muted: '#7a7970',     // --muted (secondary text)
           border: 'rgba(255,255,255,0.08)', // --border
@@ -61,8 +64,8 @@ export default {
         'sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
         'md': '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
         'lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-        'gold-glow': '0 0 20px rgba(63, 169, 245, 0.35)',
-        'accent-glow': '0 0 20px rgba(78, 158, 255, 0.3)',
+        'gold-glow': '0 0 20px rgba(255, 215, 0, 0.35)',
+        'accent-glow': '0 0 20px rgba(255, 0, 255, 0.3)',
       },
       animation: {
         'spin-slow': 'spin 8s linear infinite',

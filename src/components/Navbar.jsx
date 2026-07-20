@@ -42,23 +42,31 @@ export default function Navbar() {
             <div className="flex-shrink-0">
               <a
                 href="#hero"
-                className="text-2xl font-serif font-bold text-brand-gold-light hover:text-brand-gold transition-colors duration-300 flex items-center gap-2"
+                className="text-2xl font-serif font-bold transition-colors duration-300 flex items-center gap-2"
               >
-                <i className="fas fa-id-badge text-brand-gold text-xl"></i> Aidhil Prima Abdiguna
+                <i className="fas fa-id-badge text-brand-gold text-xl"></i>
+                <span className="text-brand-gold">Aidhil</span>{' '}
+                <span style={{ color: '#4ECDC4' }}>Prima</span>{' '}
+                <span style={{ color: '#FF00FF' }}>Abdiguna</span>
               </a>
             </div>
 
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => (
+              {navLinks.map((link, idx) => {
+                const hoverColor = idx % 3 === 0 ? '#FFD700' : idx % 3 === 1 ? '#4ECDC4' : '#FF00FF';
+                return (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-brand-muted hover:text-brand-gold transition-colors duration-300 text-sm font-medium tracking-wider uppercase"
+                  className="text-brand-muted transition-colors duration-300 text-sm font-medium tracking-wider uppercase"
+                  onMouseEnter={e => e.currentTarget.style.color = hoverColor}
+                  onMouseLeave={e => e.currentTarget.style.color = ''}
                 >
                   {link.label}
                 </a>
-              ))}
+              );
+              })}
             </div>
 
             {/* Hamburger - Mobile */}

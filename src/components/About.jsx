@@ -17,8 +17,16 @@ export default function About() {
                   background: 'linear-gradient(135deg, transparent 60%, var(--color-brand-gold-glow))'
                 }} />
               </div>
-              <div className="absolute -top-3 -left-3 w-[70px] h-[70px] border-t-2 border-l-2 border-brand-gold" />
-              <div className="absolute -bottom-3 -right-3 w-[70px] h-[70px] border-b-2 border-r-2 border-brand-gold" />
+              <div className="absolute -top-3 -left-3 w-[70px] h-[70px]" style={{
+                borderTop: '2px solid #FFD700',
+                borderLeft: '2px solid transparent',
+                borderImage: 'linear-gradient(135deg, #FFD700, #4ECDC4, #FF00FF) 1',
+              }} />
+              <div className="absolute -bottom-3 -right-3 w-[70px] h-[70px]" style={{
+                borderBottom: '2px solid #FF00FF',
+                borderRight: '2px solid transparent',
+                borderImage: 'linear-gradient(315deg, #FFD700, #4ECDC4, #FF00FF) 1',
+              }} />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3 mt-8">
