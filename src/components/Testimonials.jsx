@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { education } from '../data/portfolio';
+import ShuffleText from './ShuffleText';
 
 export default function Testimonials() {
   const [openItem, setOpenItem] = useState(null);
@@ -18,7 +19,11 @@ export default function Testimonials() {
         <div className="text-center max-w-[520px] mx-auto mb-[60px]">
           <p className="font-mono text-xs text-brand-gold tracking-widest uppercase flex items-center justify-center gap-2.5 mb-3">
             <span className="w-6 h-px bg-brand-gold" />
-            Latar Belakang
+            <ShuffleText
+              texts={['LATAR BELAKANG', 'PENDIDIKAN ITU PENTING']}
+              durations={[10000, 3000]}
+              initDurations={[3000, 3000]}
+            />
           </p>
           <h2 className="font-serif text-[clamp(1.9rem,3.5vw,2.8rem)] font-semibold leading-tight" style={{
             background: 'linear-gradient(135deg, #FFD700, #FF00FF)',

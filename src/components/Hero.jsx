@@ -1,4 +1,7 @@
 import { personalInfo, stats } from '../data/portfolio';
+import PixelBlast from './PixelBlast';
+import ShuffleText from './ShuffleText';
+import TextType from './TextType';
 
 export default function Hero() {
   return (
@@ -30,6 +33,19 @@ export default function Hero() {
         filter: 'blur(80px)',
       }} />
 
+      {/* PixelBlast background */}
+      <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden opacity-25">
+        <PixelBlast
+          variant="square"
+          color="#D1D5DB"
+          pixelSize={4}
+          patternDensity={0.6}
+          speed={0.3}
+          enableRipples={false}
+          edgeFade={0.3}
+        />
+      </div>
+
       <div className="container-custom relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-center gap-20">
           {/* Photo */}
@@ -55,7 +71,11 @@ export default function Hero() {
             <div className="animate-fade-in opacity-0 translate-y-5" style={{ animationDelay: '0s' }}>
               <p className="font-mono text-xs text-brand-gold tracking-widest uppercase flex items-center gap-2.5 mb-4">
                 <span className="w-[30px] h-px bg-brand-gold" />
-                Frontend Developer
+                <ShuffleText
+                  texts={['FRONTEND DEVELOPER', 'HALF VIBE CODER']}
+                  durations={[10000, 3000]}
+                  initDurations={[3000, 3000]}
+                />
               </p>
             </div>
 
@@ -68,7 +88,7 @@ export default function Hero() {
               }}>Prima Abdiguna</span>
             </h1>
 
-              <p className="text-lg font-light text-brand-muted mb-7 tracking-wide animate-fade-in opacity-0 translate-y-5" style={{ animationDelay: '0.24s' }}>
+              <p className="text-lg font-light text-white mb-7 tracking-wide animate-fade-in opacity-0 translate-y-5" style={{ animationDelay: '0.24s' }}>
               <strong style={{
                 background: 'linear-gradient(135deg, #FFD700, #4ECDC4)',
                 WebkitBackgroundClip: 'text',
@@ -77,9 +97,19 @@ export default function Hero() {
               }}>S1 Informatika</strong> - Universitas Muhammadiyah Makassar
             </p>
 
-            <p className="text-[0.95rem] text-brand-muted max-w-[480px] mb-10 leading-relaxed animate-fade-in opacity-0 translate-y-5" style={{ animationDelay: '0.36s' }}>
-              {personalInfo.bio}
-            </p>
+            <div className="animate-fade-in opacity-0 translate-y-5 mb-10" style={{ animationDelay: '0.36s' }}>
+              <TextType
+                text={personalInfo.bio}
+                as="p"
+                typingSpeed={35}
+                initialDelay={600}
+                loop={false}
+                showCursor={true}
+                cursorCharacter="|"
+                cursorBlinkDuration={0.4}
+                className="text-[0.95rem] text-white max-w-[480px] leading-relaxed"
+              />
+            </div>
 
             <div className="flex gap-4 flex-wrap animate-fade-in opacity-0 translate-y-5" style={{ animationDelay: '0.48s' }}>
               <a href="#contact" className="inline-flex items-center gap-2 px-6 py-3 bg-brand-gold text-brand-dark font-semibold rounded-md transition-all duration-300 cursor-pointer"

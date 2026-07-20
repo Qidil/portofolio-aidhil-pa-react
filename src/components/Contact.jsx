@@ -1,5 +1,6 @@
 import useScrollReveal from '../hooks/useScrollReveal';
 import { personalInfo, links } from '../data/portfolio';
+import ShuffleText from './ShuffleText';
 
 export default function Contact() {
   const [sectionRef, isVisible] = useScrollReveal();
@@ -20,7 +21,11 @@ export default function Contact() {
             <div className="mb-[60px]">
               <p className="font-mono text-xs text-brand-gold tracking-widest uppercase flex items-center gap-2.5 mb-3">
                 <span className="w-6 h-px bg-brand-gold" />
-                Kontak
+                <ShuffleText
+                  texts={['KONTAK', 'CALL ME... \u{1F919}']}
+                  durations={[10000, 3000]}
+                  initDurations={[3000, 3000]}
+                />
               </p>
               <h2 className="font-serif text-[clamp(1.9rem,3.5vw,2.8rem)] font-semibold leading-tight" style={{
                 background: 'linear-gradient(135deg, #FFD700, #FF00FF)',
