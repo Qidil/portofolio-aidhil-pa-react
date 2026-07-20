@@ -68,7 +68,7 @@ export default function Hero() {
 
           {/* Text */}
           <div className="max-w-xl">
-            <div className="animate-fade-in opacity-0 translate-y-5" style={{ animationDelay: '0s' }}>
+            <div className="animate-fade-in opacity-0 translate-y-5 will-animate" style={{ animationDelay: '0s' }}>
               <p className="font-mono text-xs text-brand-gold tracking-widest uppercase flex items-center gap-2.5 mb-4">
                 <span className="w-[30px] h-px bg-brand-gold" />
                 <ShuffleText
@@ -79,7 +79,7 @@ export default function Hero() {
               </p>
             </div>
 
-            <h1 className="font-serif text-[clamp(2.8rem,5vw,4.5rem)] font-semibold leading-tight text-white mb-2 animate-fade-in opacity-0 translate-y-5" style={{ animationDelay: '0.12s' }}>
+            <h1 className="font-serif text-[clamp(2.8rem,5vw,4.5rem)] font-semibold leading-tight text-white mb-2 animate-fade-in opacity-0 translate-y-5 will-animate" style={{ animationDelay: '0.12s' }}>
               Aidhil <span style={{
                 background: 'linear-gradient(135deg, #FFD700, #FF00FF)',
                 WebkitBackgroundClip: 'text',
@@ -88,7 +88,7 @@ export default function Hero() {
               }}>Prima Abdiguna</span>
             </h1>
 
-              <p className="text-lg font-light text-white mb-7 tracking-wide animate-fade-in opacity-0 translate-y-5" style={{ animationDelay: '0.24s' }}>
+              <p className="text-lg font-light text-white mb-7 tracking-wide animate-fade-in opacity-0 translate-y-5 will-animate" style={{ animationDelay: '0.24s' }}>
               <strong style={{
                 background: 'linear-gradient(135deg, #FFD700, #4ECDC4)',
                 WebkitBackgroundClip: 'text',
@@ -97,7 +97,7 @@ export default function Hero() {
               }}>S1 Informatika</strong> - Universitas Muhammadiyah Makassar
             </p>
 
-            <div className="animate-fade-in opacity-0 translate-y-5 mb-10" style={{ animationDelay: '0.36s' }}>
+            <div className="animate-fade-in opacity-0 translate-y-5 will-animate mb-10" style={{ animationDelay: '0.36s' }}>
               <TextType
                 text={personalInfo.bio}
                 as="p"
@@ -111,7 +111,7 @@ export default function Hero() {
               />
             </div>
 
-            <div className="flex gap-4 flex-wrap animate-fade-in opacity-0 translate-y-5" style={{ animationDelay: '0.48s' }}>
+            <div className="flex gap-4 flex-wrap animate-fade-in opacity-0 translate-y-5 will-animate" style={{ animationDelay: '0.48s' }}>
               <a href="#contact" className="inline-flex items-center gap-2 px-6 py-3 bg-brand-gold text-brand-dark font-semibold rounded-md transition-all duration-300 cursor-pointer"
                 onMouseEnter={e => { e.currentTarget.style.background = '#4ECDC4'; e.currentTarget.style.border = '1px solid #FF00FF'; e.currentTarget.style.color = '#FFFFFF'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = ''; e.currentTarget.style.border = ''; e.currentTarget.style.color = ''; }}
@@ -120,7 +120,7 @@ export default function Hero() {
               </a>
             </div>
 
-            <div className="flex gap-10 mt-12 animate-fade-in opacity-0 translate-y-5" style={{ animationDelay: '0.6s' }}>
+            <div className="flex gap-10 mt-12 animate-fade-in opacity-0 translate-y-5 will-animate" style={{ animationDelay: '0.6s' }}>
               <div>
                 <p className="font-serif text-[2.2rem] font-bold leading-none" style={{
                   background: 'linear-gradient(135deg, #FFD700, #4ECDC4, #FF00FF)',

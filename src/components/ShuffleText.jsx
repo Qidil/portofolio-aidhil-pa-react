@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, createElement } from 'react';
 
 const CHARSET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
 
@@ -11,6 +11,7 @@ export default function ShuffleText({ texts, durations, initDurations, className
   const animRef = useRef(null);
   const timerRef = useRef(null);
   const mountedRef = useRef(true);
+  const containerRef = useRef(null);
 
   const getDuration = useCallback((index) => {
     if (initDurations && cyclePass === 0) {
@@ -23,40 +24,51 @@ export default function ShuffleText({ texts, durations, initDurations, className
     const nextChars = Array.from(texts[nextIndex]);
     const maxLen = Math.max(...texts.map(t => Array.from(t).length));
     const settleTimes = Array.from({ length: maxLen }, (_, i) => (i * 750) / maxLen);
-
     const startTime = performance.now();
 
-    setDisplayChars(
-      Array.from({ length: maxLen }, (_, i) => ({
-        char: i < nextChars.length ? nextChars[i] : '',
-        settled: false,
-        settleAt: startTime + settleTimes[i]
-      }))
-    );
+    const chars = Array.from({ length: maxLen }, (_, i) => ({
+      char: i < nextChars.length ? nextChars[i] : '',
+      settled: false,
+      settleAt: startTime + settleTimes[i],
+    }));
+
+    setDisplayChars(chars);
+
+    const getEl = (i) => containerRef.current?.children[i];
 
     const animate = (now) => {
-      if (!mountedRef.current) return;
+      if (!mountedRef.current || document.hidden) {
+        animRef.current = requestAnimationFrame(animate);
+        return;
+      }
 
       const allSettled = settleTimes.every(t => now >= startTime + t);
 
       if (allSettled) {
-        setDisplayChars(
-          nextChars.map(c => ({ char: c, settled: true }))
-        );
+        const final = nextChars.map(c => ({ char: c, settled: true }));
+        setDisplayChars(final);
         if (wasLast) setCyclePass(1);
         setCurrentIndex(nextIndex);
         animRef.current = null;
         return;
       }
 
-      setDisplayChars(prev =>
-        prev.map((p, i) => {
-          if (now >= p.settleAt) {
-            return { ...p, settled: true, char: i < nextChars.length ? nextChars[i] : '' };
+      if (!containerRef.current) return;
+
+      for (let i = 0; i < maxLen; i++) {
+        const el = getEl(i);
+        if (!el) continue;
+        if (now >= chars[i].settleAt) {
+          if (!chars[i].settled) {
+            chars[i].settled = true;
+            chars[i].char = i < nextChars.length ? nextChars[i] : '';
+            el.textContent = chars[i].char || '\u00A0';
+            el.className = 'inline-block transition-opacity duration-150 opacity-100';
           }
-          return { ...p, char: CHARSET[Math.floor(Math.random() * CHARSET.length)] };
-        })
-      );
+        } else {
+          el.textContent = CHARSET[Math.floor(Math.random() * CHARSET.length)];
+        }
+      }
 
       animRef.current = requestAnimationFrame(animate);
     };
@@ -64,40 +76,48 @@ export default function ShuffleText({ texts, durations, initDurations, className
     animRef.current = requestAnimationFrame(animate);
   }, [texts]);
 
-  useEffect(() => {
-    mountedRef.current = true;
+  const scheduleNext = useCallback(() => {
+    clearTimeout(timerRef.current);
     const duration = getDuration(currentIndex);
-
     timerRef.current = setTimeout(() => {
-      if (!mountedRef.current) return;
+      if (!mountedRef.current || document.hidden) return;
       const next = (currentIndex + 1) % texts.length;
       const wasLast = currentIndex === texts.length - 1;
       shuffleTo(next, wasLast);
     }, duration);
-
-    return () => {
-      clearTimeout(timerRef.current);
-    };
-  }, [currentIndex, texts, shuffleTo, getDuration]);
+  }, [currentIndex, getDuration, texts, shuffleTo]);
 
   useEffect(() => {
+    mountedRef.current = true;
+    scheduleNext();
+    return () => clearTimeout(timerRef.current);
+  }, [scheduleNext]);
+
+  useEffect(() => {
+    const onVisible = () => {
+      if (document.hidden) {
+        clearTimeout(timerRef.current);
+        return;
+      }
+      if (!timerRef.current && !animRef.current) scheduleNext();
+    };
+    document.addEventListener('visibilitychange', onVisible);
     return () => {
+      document.removeEventListener('visibilitychange', onVisible);
       mountedRef.current = false;
       if (animRef.current) cancelAnimationFrame(animRef.current);
     };
-  }, []);
+  }, [scheduleNext]);
 
-  return (
-    <span className={className} aria-label={texts[currentIndex % texts.length]}>
-      {displayChars.map((c, i) => (
-        <span
-          key={i}
-          className={`inline-block transition-opacity duration-150 ${c.settled ? 'opacity-100' : 'opacity-60'}`}
-          style={{ minWidth: c.char ? '0.5em' : '0.25em' }}
-        >
-          {c.char || '\u00A0'}
-        </span>
-      ))}
-    </span>
+  return createElement(
+    'span',
+    { ref: containerRef, className, 'aria-label': texts[currentIndex % texts.length] },
+    displayChars.map((c, i) =>
+      createElement('span', {
+        key: i,
+        className: `inline-block transition-opacity duration-150 ${c.settled ? 'opacity-100' : 'opacity-60'}`,
+        style: { minWidth: c.char ? '0.5em' : '0.25em' },
+      }, c.char || '\u00A0')
+    )
   );
 }

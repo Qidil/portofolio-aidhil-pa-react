@@ -96,6 +96,10 @@ html.light {
   --color-brand-card: rgba(0,0,0,0.03);
 }
 
+.will-animate {
+  will-change: transform, opacity;
+}
+
 @keyframes spin { to { transform: rotate(360deg); } }
 
 @keyframes fadeIn {

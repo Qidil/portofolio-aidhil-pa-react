@@ -2,6 +2,15 @@ import { Effect, EffectComposer, EffectPass, RenderPass } from 'postprocessing';
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
+const isLowEnd = typeof navigator !== 'undefined' && (
+  (navigator.hardwareConcurrency || 0) <= 4 ||
+  navigator.deviceMemory === 0.25 ||
+  navigator.deviceMemory === 0.5
+);
+
+const TARGET_FPS = isLowEnd ? 24 : 60;
+const FRAME_INTERVAL = 1000 / TARGET_FPS;
+
 const createTouchTexture = () => {
   const size = 64;
   const canvas = document.createElement('canvas');
@@ -366,7 +375,7 @@ const PixelBlast = ({
       });
       renderer.domElement.style.width = '100%';
       renderer.domElement.style.height = '100%';
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isLowEnd ? 1 : 2));
       container.appendChild(renderer.domElement);
       if (transparent) renderer.setClearAlpha(0);
       else renderer.setClearColor(0x000000, 1);
@@ -495,11 +504,17 @@ const PixelBlast = ({
         passive: true
       });
       let raf = 0;
-      const animate = () => {
+      let lastFrame = 0;
+      const animate = (time) => {
         if (autoPauseOffscreen && !visibilityRef.current.visible) {
           raf = requestAnimationFrame(animate);
           return;
         }
+        if (isLowEnd && time - lastFrame < FRAME_INTERVAL) {
+          raf = requestAnimationFrame(animate);
+          return;
+        }
+        lastFrame = time;
         uniforms.uTime.value = timeOffset + clock.getElapsedTime() * speedRef.current;
         if (liquidEffect) liquidEffect.uniforms.get('uTime').value = uniforms.uTime.value;
         if (composer) {

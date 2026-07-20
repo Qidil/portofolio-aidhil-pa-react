@@ -31,6 +31,7 @@ const TextType = ({
   const cursorRef = useRef(null);
   const containerRef = useRef(null);
   const completedRef = useRef(false);
+  const cursorTweenRef = useRef(null);
 
   const textArray = useMemo(() => (Array.isArray(text) ? text : [text]), [text]);
 
@@ -39,6 +40,16 @@ const TextType = ({
     const { min, max } = variableSpeed;
     return Math.random() * (max - min) + min;
   }, [variableSpeed, typingSpeed]);
+
+  const stopCursor = () => {
+    if (cursorTweenRef.current) {
+      cursorTweenRef.current.kill();
+      cursorTweenRef.current = null;
+    }
+    if (cursorRef.current) {
+      gsap.set(cursorRef.current, { opacity: 0 });
+    }
+  };
 
   const getCurrentTextColor = () => {
     if (textColors.length === 0) return 'inherit';
@@ -66,7 +77,7 @@ const TextType = ({
   useEffect(() => {
     if (showCursor && cursorRef.current) {
       gsap.set(cursorRef.current, { opacity: 1 });
-      gsap.to(cursorRef.current, {
+      cursorTweenRef.current = gsap.to(cursorRef.current, {
         opacity: 0,
         duration: cursorBlinkDuration,
         repeat: -1,
@@ -74,6 +85,12 @@ const TextType = ({
         ease: 'power2.inOut'
       });
     }
+    return () => {
+      if (cursorTweenRef.current) {
+        cursorTweenRef.current.kill();
+        cursorTweenRef.current = null;
+      }
+    };
   }, [showCursor, cursorBlinkDuration]);
 
   useEffect(() => {
@@ -94,6 +111,7 @@ const TextType = ({
           if (onSentenceComplete) {
             onSentenceComplete(textArray[currentTextIndex], currentTextIndex);
           }
+          stopCursor();
 
           setCurrentTextIndex(prev => (prev + 1) % textArray.length);
           setCurrentCharIndex(0);
@@ -118,6 +136,7 @@ const TextType = ({
               completedRef.current = true;
               onSentenceComplete(textArray[currentTextIndex], currentTextIndex);
             }
+            stopCursor();
             return;
           }
           timeout = setTimeout(() => {
