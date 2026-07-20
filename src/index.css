@@ -137,6 +137,11 @@ html.light {
 
 .highlight { color: var(--color-brand-text); font-weight: 500; }
 
+.pause-css-animations *,
+.pause-css-animations {
+  animation-play-state: paused !important;
+}
+
 .cert-details {
   max-height: 0; overflow: hidden;
   transition: max-height 0.35s ease, margin-top 0.35s ease;

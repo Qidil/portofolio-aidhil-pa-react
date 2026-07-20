@@ -1,11 +1,27 @@
+import { useRef, useEffect } from 'react';
 import { personalInfo, stats } from '../data/portfolio';
 import PixelBlast from './PixelBlast';
 import ShuffleText from './ShuffleText';
 import TextType from './TextType';
 
 export default function Hero() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        el.classList.toggle('pause-css-animations', !entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="hero" className="relative min-h-screen flex items-center pt-20 md:pt-28 pb-24 md:pb-12 bg-brand-dark">
+    <section ref={sectionRef} id="hero" className="relative min-h-screen flex items-center pt-20 md:pt-28 pb-24 md:pb-12 bg-brand-dark">
       {/* Noise texture overlay */}
       <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.025]" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`
@@ -47,9 +63,9 @@ export default function Hero() {
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-20">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-20 w-full">
           {/* Photo */}
-          <div className="flex-shrink-0 relative">
+          <div className="flex-shrink-0 relative max-w-full">
             <div className="w-[260px] h-[260px] rounded-full p-[3px]" style={{
               background: 'conic-gradient(var(--color-brand-gold), var(--color-brand-teal), var(--color-brand-accent), var(--color-brand-gold-light), var(--color-brand-gold), transparent 60%, var(--color-brand-gold))',
               animation: 'spin 8s linear infinite',
@@ -67,7 +83,7 @@ export default function Hero() {
           </div>
 
           {/* Text */}
-          <div className="max-w-xl">
+          <div className="max-w-xl w-full min-w-0">
             <div className="animate-fade-in opacity-0 translate-y-5 will-animate" style={{ animationDelay: '0s' }}>
               <p className="font-mono text-xs text-brand-gold tracking-widest uppercase flex items-center gap-2.5 mb-4">
                 <span className="w-[30px] h-px bg-brand-gold" />
@@ -79,7 +95,7 @@ export default function Hero() {
               </p>
             </div>
 
-            <h1 className="font-serif text-[clamp(2.8rem,5vw,4.5rem)] font-semibold leading-tight text-white mb-2 animate-fade-in opacity-0 translate-y-5 will-animate" style={{ animationDelay: '0.12s' }}>
+            <h1 className="font-serif text-[clamp(2.8rem,5vw,4.5rem)] font-semibold leading-tight text-white mb-2 animate-fade-in opacity-0 translate-y-5 will-animate break-words" style={{ animationDelay: '0.12s' }}>
               Aidhil <span style={{
                 background: 'linear-gradient(135deg, #FFD700, #FF00FF)',
                 WebkitBackgroundClip: 'text',
@@ -120,7 +136,7 @@ export default function Hero() {
               </a>
             </div>
 
-            <div className="flex gap-10 mt-12 animate-fade-in opacity-0 translate-y-5 will-animate" style={{ animationDelay: '0.6s' }}>
+            <div className="flex flex-wrap gap-4 md:gap-10 mt-12 animate-fade-in opacity-0 translate-y-5 will-animate" style={{ animationDelay: '0.6s' }}>
               <div>
                 <p className="font-serif text-[2.2rem] font-bold leading-none" style={{
                   background: 'linear-gradient(135deg, #FFD700, #4ECDC4, #FF00FF)',
@@ -130,7 +146,7 @@ export default function Hero() {
                 }}>{stats.yearsExperience}+</p>
                 <p className="text-xs text-white/55 tracking-wider uppercase mt-1">Tahun Pengalaman</p>
               </div>
-              <div className="w-px bg-brand-border self-stretch" />
+              <div className="w-px bg-brand-border self-stretch hidden md:block" />
               <div>
                 <p className="font-serif text-[2.2rem] font-bold leading-none" style={{
                   background: 'linear-gradient(135deg, #FFD700, #4ECDC4, #FF00FF)',
@@ -140,7 +156,7 @@ export default function Hero() {
                 }}>{stats.projectsCompleted}</p>
                 <p className="text-xs text-white/55 tracking-wider uppercase mt-1">Proyek Portofolio</p>
               </div>
-              <div className="w-px bg-brand-border self-stretch" />
+              <div className="w-px bg-brand-border self-stretch hidden md:block" />
               <div>
                 <p className="font-serif text-[2.2rem] font-bold leading-none" style={{
                   background: 'linear-gradient(135deg, #FFD700, #4ECDC4, #FF00FF)',

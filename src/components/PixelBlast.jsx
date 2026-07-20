@@ -8,7 +8,11 @@ const isLowEnd = typeof navigator !== 'undefined' && (
   navigator.deviceMemory === 0.5
 );
 
-const TARGET_FPS = isLowEnd ? 24 : 60;
+const isMobile = typeof navigator !== 'undefined' && (
+  /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+);
+
+const TARGET_FPS = (isLowEnd || isMobile) ? 20 : 60;
 const FRAME_INTERVAL = 1000 / TARGET_FPS;
 
 const createTouchTexture = () => {
@@ -335,9 +339,28 @@ const PixelBlast = ({
   const containerRef = useRef(null);
   const visibilityRef = useRef({ visible: true });
   const speedRef = useRef(speed);
+  const mobileRef = useRef(false);
 
   const threeRef = useRef(null);
   const prevConfigRef = useRef(null);
+
+  useEffect(() => {
+    mobileRef.current = typeof navigator !== 'undefined' && (
+      /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+      window.innerWidth < 768
+    );
+  }, []);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || !autoPauseOffscreen) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { visibilityRef.current.visible = entry.isIntersecting; },
+      { threshold: 0 }
+    );
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [autoPauseOffscreen]);
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -510,7 +533,8 @@ const PixelBlast = ({
           raf = requestAnimationFrame(animate);
           return;
         }
-        if (isLowEnd && time - lastFrame < FRAME_INTERVAL) {
+        const shouldThrottle = isLowEnd || mobileRef.current;
+        if (shouldThrottle && time - lastFrame < FRAME_INTERVAL) {
           raf = requestAnimationFrame(animate);
           return;
         }

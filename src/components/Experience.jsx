@@ -1,9 +1,15 @@
+import { useState } from 'react';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { experiences } from '../data/portfolio';
 import ShuffleText from './ShuffleText';
 
 export default function Experience() {
+  const [openExp, setOpenExp] = useState(null);
   const [sectionRef, isVisible] = useScrollReveal();
+
+  const toggleExp = (idx) => {
+    setOpenExp(openExp === idx ? null : idx);
+  };
 
   return (
     <section id="experience" className="py-[100px] bg-brand-darker">
@@ -32,9 +38,11 @@ export default function Experience() {
           </div>
 
           <div className="relative pl-8 before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-px before:bg-brand-border">
-            {experiences.map((exp, idx) => (
+            {experiences.map((exp, idx) => {
+              const isOpen = openExp === idx;
+              return (
               <div key={idx}
-                className={`relative mb-[52px] p-7 bg-brand-card border border-brand-border rounded-sm hover:-translate-y-0.5 transition-all duration-500 before:content-[''] before:absolute before:-left-[40px] before:top-8 before:w-[14px] before:h-[14px] before:rounded-full before:border-2 before:border-brand-darker reveal reveal-delay-${Math.min(idx + 1, 6)} ${isVisible ? 'visible' : ''}`}
+                className={`relative mb-[52px] p-7 bg-brand-card border border-brand-border rounded-sm transition-all duration-500 before:content-[''] before:absolute before:-left-[40px] before:top-8 before:w-[14px] before:h-[14px] before:rounded-full before:border-2 before:border-brand-darker reveal reveal-delay-${Math.min(idx + 1, 6)} ${isVisible ? 'visible' : ''}`}
                 onMouseEnter={e => {
                   e.currentTarget.style.borderImage = 'linear-gradient(135deg, #FFD700, #4ECDC4, #FF00FF) 1';
                   e.currentTarget.style.boxShadow = '0 8px 32px rgba(255,215,0,.15)';
@@ -59,16 +67,37 @@ export default function Experience() {
                   <span className="font-mono text-xs text-brand-muted whitespace-nowrap px-2.5 py-1 border border-brand-border rounded-full">{exp.period}</span>
                 </div>
                 <p className="text-[0.88rem] text-brand-muted mb-3 leading-relaxed">{exp.description}</p>
-                <ul className="space-y-1">
-                  {exp.achievements.map((ach, achIdx) => (
-                    <li key={achIdx} className="text-[0.86rem] text-brand-muted pl-4 relative before:content-['▸'] before:absolute before:left-0 before:text-brand-gold before:text-[0.7rem] before:top-[5px]">
-                      {ach}
-                    </li>
-                  ))}
-                </ul>
+
+                <button
+                  onClick={() => toggleExp(idx)}
+                  className="inline-flex items-center gap-1.5 text-[0.82rem] font-semibold bg-transparent border-none cursor-pointer pb-0.5"
+                  style={{
+                    background: 'linear-gradient(135deg, #FFD700, #FF00FF)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
+                  {isOpen ? 'Sembunyikan' : 'Selengkapnya'} <i className="fas fa-chevron-down text-[0.7rem]" style={{
+                    transform: isOpen ? 'rotate(180deg)' : '',
+                    transition: 'transform 0.3s ease',
+                  }} />
+                </button>
+
+                <div className={`cert-details ${isOpen ? 'open' : ''}`}>
+                  <ul className="space-y-1">
+                    {exp.achievements.map((ach, achIdx) => (
+                      <li key={achIdx} className="text-[0.86rem] text-brand-muted pl-4 relative before:content-['▸'] before:absolute before:left-0 before:text-brand-gold before:text-[0.7rem] before:top-[5px]">
+                        {ach}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
                 <style>{`.exp-dot-${idx}::before { background: conic-gradient(#FFD700, #4ECDC4, #FF00FF, #FFD700); box-shadow: 0 0 12px rgba(255,215,0,.5); }`}</style>
               </div>
-            ))}
+            );
+            })}
           </div>
         </div>
       </div>

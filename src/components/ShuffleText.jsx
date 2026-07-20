@@ -11,7 +11,19 @@ export default function ShuffleText({ texts, durations, initDurations, className
   const animRef = useRef(null);
   const timerRef = useRef(null);
   const mountedRef = useRef(true);
+  const visibleRef = useRef(true);
   const containerRef = useRef(null);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { visibleRef.current = entry.isIntersecting; },
+      { threshold: 0 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const getDuration = useCallback((index) => {
     if (initDurations && cyclePass === 0) {
@@ -23,7 +35,7 @@ export default function ShuffleText({ texts, durations, initDurations, className
   const shuffleTo = useCallback((nextIndex, wasLast) => {
     const nextChars = Array.from(texts[nextIndex]);
     const maxLen = Math.max(...texts.map(t => Array.from(t).length));
-    const settleTimes = Array.from({ length: maxLen }, (_, i) => (i * 750) / maxLen);
+    const settleTimes = Array.from({ length: maxLen }, (_, i) => (i * 1500) / maxLen);
     const startTime = performance.now();
 
     const chars = Array.from({ length: maxLen }, (_, i) => ({
@@ -37,7 +49,7 @@ export default function ShuffleText({ texts, durations, initDurations, className
     const getEl = (i) => containerRef.current?.children[i];
 
     const animate = (now) => {
-      if (!mountedRef.current || document.hidden) {
+      if (!mountedRef.current || document.hidden || !visibleRef.current) {
         animRef.current = requestAnimationFrame(animate);
         return;
       }
@@ -80,7 +92,7 @@ export default function ShuffleText({ texts, durations, initDurations, className
     clearTimeout(timerRef.current);
     const duration = getDuration(currentIndex);
     timerRef.current = setTimeout(() => {
-      if (!mountedRef.current || document.hidden) return;
+      if (!mountedRef.current || document.hidden || !visibleRef.current) return;
       const next = (currentIndex + 1) % texts.length;
       const wasLast = currentIndex === texts.length - 1;
       shuffleTo(next, wasLast);
