@@ -315,6 +315,21 @@ export const certificates = [
     ],
     credentialUrl: 'https://drive.google.com/file/d/16lnWThOvofkdu6cZ87Z73jBfagbyUYRU/view?usp=sharing',
   },
+  {
+    title: 'Certificate of Appreciation, DSF 53.0 - Digital Marketing',
+    icon: 'fas fa-award',
+    category: 'Digital Marketing',
+    issuer: 'Dibimbing',
+    date: 'Juli 2026',
+    description: 'Certificate of Appreciation sebagai peserta DSF 53.0 - Digital Marketing oleh Dibimbing.',
+    details: [
+      'Berpartisipasi aktif dalam program DSF 53.0',
+      'Mempelajari Digital Marketing dari mentor profesional',
+      'Mengaplikasikan konsep marketing digital dalam studi kasus',
+      'Pengembangan skill marketing untuk kebutuhan industri',
+    ],
+    credentialUrl: 'https://drive.google.com/file/d/1p7gHPdmuGyzVJKA75KUchOedO2wFf0J6/view?usp=sharing',
+  },
 ];
 
 export const education = [
