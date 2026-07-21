@@ -1,6 +1,7 @@
 import useScrollReveal from '../hooks/useScrollReveal';
 import { projects } from '../data/portfolio';
 import ShuffleText from './ShuffleText';
+import Stack from './Stack';
 
 const techColors = {
   'React.js': '#4ECDC4',
@@ -14,6 +15,52 @@ const techColors = {
   'React Router': '#CA4245',
   'TanStack Query': '#FF4154',
 };
+
+const iconColors = ['#4ECDC4', '#FFD700', '#FF00FF', '#38BDF8'];
+
+const projectCards = projects.map((project, idx) => {
+  const iconColor = iconColors[idx % iconColors.length];
+  const openProject = () => window.open(project.link, '_blank', 'noopener');
+  return (
+    <div
+      key={idx}
+      role="button"
+      tabIndex={0}
+      onClick={openProject}
+      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') openProject(); }}
+      className="bg-brand-darker border border-brand-border rounded-sm p-8 transition-all duration-300 relative overflow-hidden group w-full h-full cursor-pointer select-none"
+    >
+      <div className="absolute top-0 left-0 right-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
+        background: 'linear-gradient(90deg, transparent, #FFD700, #4ECDC4, #FF00FF, transparent)',
+      }} />
+      <div className="flex flex-col h-full">
+        <div className="w-12 h-12 flex items-center justify-center rounded-sm mb-5 text-xl" style={{
+          background: `${iconColor}20`,
+          color: iconColor,
+          border: `1px solid ${iconColor}40`,
+        }}>
+          <i className={`fas ${project.icon}`}></i>
+        </div>
+        <p className="font-serif text-xl font-semibold text-white mb-3">{project.title}</p>
+        <p className="text-[0.88rem] text-brand-muted leading-relaxed mb-6 flex-grow">{project.description}</p>
+        <div className="flex flex-wrap gap-2 mb-5">
+          {project.technologies.map((tech, techIdx) => {
+            const col = techColors[tech] || '#FFD700';
+            return (
+              <span key={techIdx} className="font-mono text-[0.7rem] px-[9px] py-[3px] border rounded-sm" style={{
+                borderColor: `${col}40`,
+                color: col,
+              }}>
+                {tech}
+              </span>
+            );
+          })}
+        </div>
+
+      </div>
+    </div>
+  );
+});
 
 export default function Projects() {
   const [sectionRef, isVisible] = useScrollReveal();
@@ -43,46 +90,22 @@ export default function Projects() {
           }} />
         </div>
 
-        <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {projects.map((project, idx) => {
-            const iconColors = ['#4ECDC4', '#FFD700', '#FF00FF', '#38BDF8'];
-            const iconColor = iconColors[idx % iconColors.length];
-            return (
-            <a
-              key={idx}
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`block bg-brand-card border border-brand-border rounded-sm p-7 transition-all duration-300 relative overflow-hidden hover:-translate-y-[5px] hover:shadow-[0_20px_50px_rgba(0,0,0,.4)] group reveal reveal-delay-${Math.min(idx + 1, 6)} ${isVisible ? 'visible' : ''}`}
-            >
-              <div className="absolute top-0 left-0 right-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
-                background: 'linear-gradient(90deg, transparent, #FFD700, #4ECDC4, #FF00FF, transparent)',
-              }} />
-              <div className="w-11 h-11 flex items-center justify-center rounded-sm mb-5 text-lg" style={{
-                background: `${iconColor}20`,
-                color: iconColor,
-                border: `1px solid ${iconColor}40`,
-              }}>
-                <i className={`fas ${project.icon}`}></i>
-              </div>
-              <p className="font-serif text-lg font-semibold text-white mb-2">{project.title}</p>
-              <p className="text-[0.84rem] text-brand-muted leading-relaxed mb-5">{project.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech, techIdx) => {
-                  const col = techColors[tech] || '#FFD700';
-                  return (
-                  <span key={techIdx} className="font-mono text-[0.7rem] px-[9px] py-[3px] border rounded-sm" style={{
-                    borderColor: `${col}40`,
-                    color: col,
-                  }}>
-                    {tech}
-                  </span>
-                );
-                })}
-              </div>
-            </a>
-            );
-          })}
+        <div ref={sectionRef} className={`reveal ${isVisible ? 'visible' : ''}`}>
+          <div className="max-w-lg mx-auto">
+            <Stack
+              cards={projectCards}
+              autoplay
+              autoplayDelay={4000}
+              pauseOnHover
+              randomRotation
+              sensitivity={150}
+              animationConfig={{ stiffness: 260, damping: 20 }}
+            />
+          </div>
+          <p className="text-center text-[0.8rem] text-brand-muted mt-4 font-mono">
+            <i className="fas fa-arrows-left-right mr-1.5" />
+            Geser kartu untuk mengganti
+          </p>
         </div>
       </div>
     </section>

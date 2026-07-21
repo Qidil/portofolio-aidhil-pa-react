@@ -80,7 +80,7 @@ export default function CertCarousel({ items, children, className = '' }) {
           <p className="text-[0.86rem] text-brand-muted leading-relaxed">{item.issuer} — {item.date}</p>
           {item.details && (
             <span
-              onClick={() => { if (!isDragging) toggleOpen(idx); }}
+              onClick={() => { if (!isDragging) toggleOpen(globalIdx); }}
               className="inline-flex items-center gap-1.5 mt-1.5 text-[0.82rem] font-semibold bg-transparent border-none cursor-pointer select-none"
               style={{
                 background: 'linear-gradient(135deg, #FFD700, #FF00FF)',

@@ -435,7 +435,7 @@ const PixelBlast = ({
       const quadGeom = new THREE.PlaneGeometry(2, 2);
       const quad = new THREE.Mesh(quadGeom, material);
       scene.add(quad);
-      const clock = new THREE.Clock();
+      const timer = new THREE.Timer();
       const setSize = () => {
         const w = container.clientWidth || 1;
         const h = container.clientHeight || 1;
@@ -539,7 +539,8 @@ const PixelBlast = ({
           return;
         }
         lastFrame = time;
-        uniforms.uTime.value = timeOffset + clock.getElapsedTime() * speedRef.current;
+        timer.update();
+        uniforms.uTime.value = timeOffset + timer.getElapsed() * speedRef.current;
         if (liquidEffect) liquidEffect.uniforms.get('uTime').value = uniforms.uTime.value;
         if (composer) {
           if (touch) touch.update();
@@ -561,7 +562,7 @@ const PixelBlast = ({
         scene,
         camera,
         material,
-        clock,
+        timer,
         clickIx: 0,
         uniforms,
         resizeObserver: ro,

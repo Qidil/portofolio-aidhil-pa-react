@@ -13,12 +13,18 @@ export default function ShuffleText({ texts, durations, initDurations, className
   const mountedRef = useRef(true);
   const visibleRef = useRef(true);
   const containerRef = useRef(null);
+  const scheduleNextRef = useRef(null);
 
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => { visibleRef.current = entry.isIntersecting; },
+      ([entry]) => {
+        visibleRef.current = entry.isIntersecting;
+        if (entry.isIntersecting && !timerRef.current && !animRef.current) {
+          scheduleNextRef.current?.();
+        }
+      },
       { threshold: 0 }
     );
     observer.observe(el);
@@ -92,12 +98,15 @@ export default function ShuffleText({ texts, durations, initDurations, className
     clearTimeout(timerRef.current);
     const duration = getDuration(currentIndex);
     timerRef.current = setTimeout(() => {
+      timerRef.current = null;
       if (!mountedRef.current || document.hidden || !visibleRef.current) return;
       const next = (currentIndex + 1) % texts.length;
       const wasLast = currentIndex === texts.length - 1;
       shuffleTo(next, wasLast);
     }, duration);
   }, [currentIndex, getDuration, texts, shuffleTo]);
+
+  scheduleNextRef.current = scheduleNext;
 
   useEffect(() => {
     mountedRef.current = true;
@@ -109,6 +118,7 @@ export default function ShuffleText({ texts, durations, initDurations, className
     const onVisible = () => {
       if (document.hidden) {
         clearTimeout(timerRef.current);
+        timerRef.current = null;
         return;
       }
       if (!timerRef.current && !animRef.current) scheduleNext();
