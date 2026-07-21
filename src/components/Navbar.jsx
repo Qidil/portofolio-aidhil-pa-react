@@ -42,12 +42,9 @@ export default function Navbar() {
             <div className="flex-shrink-0">
               <a
                 href="#hero"
-                className="text-2xl font-serif font-bold transition-colors duration-300 flex items-center gap-2"
+                className="transition-colors duration-300 flex items-center"
               >
-                <i className="fas fa-id-badge text-brand-gold text-xl"></i>
-                <span className="text-brand-gold">Aidhil</span>{' '}
-                <span style={{ color: '#4ECDC4' }}>Prima</span>{' '}
-                <span style={{ color: '#FF00FF' }}>Abdiguna</span>
+                <i className="fas fa-id-badge text-brand-gold text-2xl"></i>
               </a>
             </div>
 
