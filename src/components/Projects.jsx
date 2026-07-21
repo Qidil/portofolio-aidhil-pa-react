@@ -19,7 +19,7 @@ export default function Projects() {
   const [sectionRef, isVisible] = useScrollReveal();
 
   return (
-    <section id="projects" className="py-[100px] bg-brand-dark">
+    <section className="py-[100px] bg-brand-dark">
       <div className="container-custom">
         <div className="mb-[60px]">
           <p className="font-mono text-xs text-brand-gold tracking-widest uppercase flex items-center gap-2.5 mb-3">

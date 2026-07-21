@@ -14,7 +14,7 @@ export default function Testimonials() {
   const eduIconColors = ['#FFD700', '#4ECDC4', '#FF00FF', '#38BDF8'];
 
   return (
-    <section id="testimonials" className="py-[100px] bg-brand-dark">
+    <section className="py-[100px] bg-brand-dark">
       <div className="container-custom">
         <div className="text-center max-w-[520px] mx-auto mb-[60px]">
           <p className="font-mono text-xs text-brand-gold tracking-widest uppercase flex items-center justify-center gap-2.5 mb-3">

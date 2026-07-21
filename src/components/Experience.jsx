@@ -12,7 +12,7 @@ export default function Experience() {
   };
 
   return (
-    <section id="experience" className="py-[100px] bg-brand-darker">
+    <section className="py-[100px] bg-brand-darker">
       <div className="container-custom">
         <div ref={sectionRef} className={`${isVisible ? 'visible' : ''}`} style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.7s ease' }}>
           <div className="mb-[60px]">

@@ -15,13 +15,13 @@ export default function App() {
   return (
     <MainLayout>
       <Hero />
-      <LazySection><About /></LazySection>
-      <LazySection><Skills /></LazySection>
-      <LazySection><Experience /></LazySection>
-      <LazySection><Projects /></LazySection>
-      <LazySection><Certificates /></LazySection>
-      <LazySection><Testimonials /></LazySection>
-      <LazySection><Contact /></LazySection>
+      <LazySection sectionId="about"><About /></LazySection>
+      <LazySection sectionId="skills"><Skills /></LazySection>
+      <LazySection sectionId="experience"><Experience /></LazySection>
+      <LazySection sectionId="projects"><Projects /></LazySection>
+      <LazySection sectionId="services"><Certificates /></LazySection>
+      <LazySection sectionId="testimonials"><Testimonials /></LazySection>
+      <LazySection sectionId="contact"><Contact /></LazySection>
     </MainLayout>
   );
 }

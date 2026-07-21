@@ -62,7 +62,7 @@ export default function Skills() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="skills" className="py-[100px] bg-brand-dark">
+    <section ref={sectionRef} className="py-[100px] bg-brand-dark">
       <div className="container-custom">
         <div ref={headerRef} className={`text-center max-w-[520px] mx-auto mb-[60px] reveal ${headerVisible ? 'visible' : ''}`}>
           <p className="font-mono text-xs text-brand-gold tracking-widest uppercase flex items-center justify-center gap-2.5 mb-3">

@@ -6,7 +6,7 @@ export default function About() {
   const [sectionRef, isVisible] = useScrollReveal();
 
   return (
-    <section id="about" className="py-[100px] bg-brand-darker">
+    <section  className="py-[100px] bg-brand-darker">
       <div className="container-custom">
         <div ref={sectionRef} className={`grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-20 items-center ${isVisible ? 'visible' : ''}`} style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.7s ease' }}>
           {/* Heading */}
