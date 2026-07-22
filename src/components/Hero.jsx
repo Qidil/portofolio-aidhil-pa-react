@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { personalInfo, stats } from '../data/portfolio';
 import PixelBlast from './PixelBlast';
 import ShuffleText from './ShuffleText';
@@ -6,12 +6,14 @@ import TextType from './TextType';
 
 export default function Hero() {
   const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
+        setIsVisible(entry.isIntersecting);
         el.classList.toggle('pause-css-animations', !entry.isIntersecting);
       },
       { threshold: 0 }
@@ -21,7 +23,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="hero" className="relative min-h-screen flex items-center pt-20 md:pt-28 pb-24 md:pb-12 bg-brand-dark">
+    <section ref={sectionRef} id="hero" className="relative min-h-screen flex items-center pt-20 md:pt-28 pb-24 md:pb-12 bg-brand-dark overflow-hidden">
       {/* Noise texture overlay */}
       <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.025]" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`
@@ -50,17 +52,19 @@ export default function Hero() {
       }} />
 
       {/* PixelBlast background */}
-      <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden opacity-25">
-        <PixelBlast
-          variant="square"
-          color="#D1D5DB"
-          pixelSize={4}
-          patternDensity={0.6}
-          speed={0.3}
-          enableRipples={false}
-          edgeFade={0.3}
-        />
-      </div>
+      {isVisible && (
+        <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden opacity-25">
+          <PixelBlast
+            variant="square"
+            color="#D1D5DB"
+            pixelSize={4}
+            patternDensity={0.6}
+            speed={0.3}
+            enableRipples={false}
+            edgeFade={0.3}
+          />
+        </div>
+      )}
 
       <div className="container-custom relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-center gap-20 w-full">

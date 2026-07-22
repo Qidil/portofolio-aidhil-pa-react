@@ -63,7 +63,7 @@ export default function CertCarousel({ items, children, className = '' }) {
     const isOpen = openIdx === globalIdx;
     const color = iconColors[globalIdx % iconColors.length];
     return (
-      <div className="bg-brand-card border border-brand-border rounded-sm transition-all duration-300 w-full select-none">
+      <div key={globalIdx} className="bg-brand-card border border-brand-border rounded-sm transition-all duration-300 w-full select-none">
         <div
           className="p-9 flex flex-col items-center text-center cursor-grab active:cursor-grabbing"
           onPointerDown={() => setIsDragging(false)}

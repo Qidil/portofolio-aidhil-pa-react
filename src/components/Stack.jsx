@@ -71,7 +71,7 @@ export default function Stack({
   return (
     <div
       className="relative w-full"
-      style={{ perspective: 600, height: '520px' }}
+      style={{ perspective: 600, minHeight: '380px' }}
       onMouseEnter={() => pauseOnHover && setIsPaused(true)}
       onMouseLeave={() => pauseOnHover && setIsPaused(false)}
     >

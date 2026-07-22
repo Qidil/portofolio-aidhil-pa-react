@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, useCallback, createElement } from 'react';
 const CHARSET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
 
 export default function ShuffleText({ texts, durations, initDurations, className = '' }) {
+  const [isOnScreen, setIsOnScreen] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cyclePass, setCyclePass] = useState(0);
   const [displayChars, setDisplayChars] = useState(() =>
@@ -21,6 +22,7 @@ export default function ShuffleText({ texts, durations, initDurations, className
     const observer = new IntersectionObserver(
       ([entry]) => {
         visibleRef.current = entry.isIntersecting;
+        setIsOnScreen(entry.isIntersecting);
         if (entry.isIntersecting && !timerRef.current && !animRef.current) {
           scheduleNextRef.current?.();
         }
@@ -41,7 +43,7 @@ export default function ShuffleText({ texts, durations, initDurations, className
   const shuffleTo = useCallback((nextIndex, wasLast) => {
     const nextChars = Array.from(texts[nextIndex]);
     const maxLen = Math.max(...texts.map(t => Array.from(t).length));
-    const settleTimes = Array.from({ length: maxLen }, (_, i) => (i * 1500) / maxLen);
+    const settleTimes = Array.from({ length: maxLen }, (_, i) => (i * 2000) / maxLen);
     const startTime = performance.now();
 
     const chars = Array.from({ length: maxLen }, (_, i) => ({
@@ -130,6 +132,10 @@ export default function ShuffleText({ texts, durations, initDurations, className
       if (animRef.current) cancelAnimationFrame(animRef.current);
     };
   }, [scheduleNext]);
+
+  if (!isOnScreen) {
+    return createElement('span', { className }, texts[currentIndex]);
+  }
 
   return createElement(
     'span',
